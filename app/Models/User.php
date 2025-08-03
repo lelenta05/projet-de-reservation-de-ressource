@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nom',
         'email',
         'password',
     ];
@@ -44,5 +44,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //realtions
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
     }
 }
