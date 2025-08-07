@@ -11,7 +11,7 @@ class UpdateRessourceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,14 @@ class UpdateRessourceRequest extends FormRequest
      */
     public function rules(): array
     {
+        //les regles de validation pour la function update dans le controller Ressource 
+        //sommetimes :Laravel ignore la règle si le champ est absent (pas d'erreur de validation ), mais valide si le champ est présent.
         return [
-            //
+            'nom'=> 'sometimes|required|string |max:255',
+            'type' => 'sometimes|required|string|max:100',
+            'localisation' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+            'capacite' => 'sometimes|required|integer|min:1',
         ];
     }
 }

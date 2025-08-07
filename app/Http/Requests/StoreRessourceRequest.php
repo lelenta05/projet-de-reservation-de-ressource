@@ -11,7 +11,8 @@ class StoreRessourceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // L'autorisation se fait via les policies, donc on laisse true ici.
+        return true;
     }
 
     /**
@@ -21,8 +22,13 @@ class StoreRessourceRequest extends FormRequest
      */
     public function rules(): array
     {
+        //les regles de validation dans la function store du controller Ressource 
         return [
-            //
+            'nom' => 'required|string|max:255',
+            'type' => 'required|string|max:100',
+            'localisation' => 'required|string|max:255',
+            'description' => 'required|string',
+            'capacite' => 'required|integer|min:1',
         ];
     }
 }

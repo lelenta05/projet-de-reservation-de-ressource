@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Ressource extends Model
 {
     /** @use HasFactory<\Database\Factories\RessourceFactory> */
-    use HasFactory;
+    use HasFactory,HasApiTokens;
     protected $fillable =[
         'nom',
         'type',
@@ -18,8 +19,8 @@ class Ressource extends Model
     ];
 
     //les relations
-    public function reservation()
+    public function reservations()
     {
-        return $this->belongsTo(Reservation::class);
+        return $this->hasMany(Reservation::class);
     }
 }

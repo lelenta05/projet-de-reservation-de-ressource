@@ -19,13 +19,13 @@ class Reservation extends Model
     ];
 
     //les relations
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
-    public function ressources()
+    public function ressource()
     {
-        return $this->hasMany(Ressource::class,'ressource_id');
+        return $this->belongsTo(Ressource::class,'ressource_id');
     }
 }
 

@@ -8,12 +8,21 @@ use Illuminate\Auth\Access\Response;
 
 class ReservationPolicy
 {
+
+    public function before(User $user, $ability)
+    {
+        //admin peut tout faire 
+        if($user->role && $user->role->nom === 'admin'){
+            return true ;
+        }
+        return null ;//on continue les methodes suivants 
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;//tout le monde peut voir ses reservations
     }
 
     /**
@@ -21,7 +30,8 @@ class ReservationPolicy
      */
     public function view(User $user, Reservation $reservation): bool
     {
-        return false;
+        //un utilisateur peut voir uniquement ses reservations 
+        return $reservation->user_id === $user->id;
     }
 
     /**
@@ -29,7 +39,8 @@ class ReservationPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        //un utilisateur peut faire une reservation 
+        return $user->role && $user->role->nom === 'user';
     }
 
     /**
@@ -37,7 +48,8 @@ class ReservationPolicy
      */
     public function update(User $user, Reservation $reservation): bool
     {
-        return false;
+        //un utilisateur peut modifier uniquement ses reservations 
+        return $reservation->user_id === $user->id;
     }
 
     /**
@@ -45,7 +57,8 @@ class ReservationPolicy
      */
     public function delete(User $user, Reservation $reservation): bool
     {
-        return false;
+        //un utilisateur peut uniquement supprime ses reservations 
+        return $reservation->user_id === $user->id;
     }
 
     /**
