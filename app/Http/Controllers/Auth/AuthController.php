@@ -9,6 +9,29 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+/**
+ * @OA\Post(
+ *     path="/register",
+ *     summary="Créer un nouveau utilisateur",
+ *     tags={"Users"},
+ *     security={{"sanctum":{}}},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"nom", "email","password","role_id"},
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="Utilisateur créé ainsi que son token ",
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Erreur de validation"
+ *     )
+ * )
+ */
     //Inscription
     public function register(Request $request)
     {
@@ -35,6 +58,29 @@ class AuthController extends Controller
         ],201);
 
     }
+/**
+ * @OA\Post(
+ *     path="/login",
+ *     summary="Connexion d'un utilisateur",
+ *     tags={"Users"},
+ *     security={{"sanctum":{}}},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={ "email","password"},
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="Utilisateur connecté avec son token ",
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Identifiant incorrecte"
+ *     )
+ * )
+ */
     //connexion
     public function login(Request $request)
     {
@@ -60,6 +106,19 @@ class AuthController extends Controller
         ]);
 
     }
+/**
+ * @OA\Post(
+ *     path="/logout",
+ *     summary="Deconnexion ",
+ *     tags={"Users"},
+ *     security={{"sanctum":{}}},
+ *     @OA\Response(
+ *         response=201,
+ *         description="Deconnecte ainsi que la suppression de tous les tokens de l'utilisateur concerne . ",
+ *         @OA\JsonContent(ref="#/components/schemas/User")
+ *     ),
+ * )
+ */
     //Deconnexion
     public function logout(Request $request)
     {
