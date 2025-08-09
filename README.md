@@ -49,9 +49,16 @@ Il faut au préalable installer docker desktop selon ton système d’exploitati
     docker run --rm --network gestion_reservation_laravel -p 8081:8080 adminer
 
    ```
+   
+4. **Commande pour tailwindcss +vite**
+```bash
+npm install
+npm run dev 
+
+```
 
 
-3. **Configurer l’environnement**
+5. **Configurer l’environnement pour la boite d'eamil**
    - Copier `.env.example` en `.env`
    - **Mailtrap** pour le développement :
      ```
@@ -65,14 +72,14 @@ Il faut au préalable installer docker desktop selon ton système d’exploitati
      MAIL_FROM_NAME="Gestion Réservations"
      ```
 
-4. **Migrer la base et créer un admin (facultatif)**
+6. **Migrer la base et créer un admin (facultatif)**
    ```bash
    Dokcer-compose exec app php artisan migrate
    # Facultatif : seed admin/user/ressources
    php artisan db:seed
    ```
 
-5. **Lancer le serveur**
+7. **Lancer le serveur**
    Avec docker plus besoin de passe la commande php artisan serve pour lance le serveur , vous devez juste ouvrir votre navigateur est lance http://localhost:8080 
 
 ---
