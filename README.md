@@ -37,10 +37,9 @@ Il faut au préalable installer docker desktop selon ton système d’exploitati
    ```bash
    docker-compose up -d –build
    ```
-     ```bash
+   
+   ```bash
    docker-compose exec app composer install
-   ```
-       ```bash
    docker-compose exec app php artisan key:generate
    ```
    
