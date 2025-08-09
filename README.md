@@ -36,9 +36,8 @@ Il faut au préalable installer docker desktop selon ton système d’exploitati
 2. **Les commandes de base pour docker **
    ```bash
    docker-compose up -d –build
- docker-compose exec app composer install
-docker-compose exec app php artisan key:generate
-
+  docker-compose exec app composer install
+  docker-compose exec app php artisan key:generate
    ```
 3. **Pour lancer la base de donnée**
    ```bash
@@ -134,4 +133,4 @@ resources/views/
 
 ## 📝 Auteur
 
-Projet réalisé par [lelenta05 https://github.com/votre-utilisateur).
+Projet réalisé par [lelenta05 : https://github.com/votre-utilisateur ].
