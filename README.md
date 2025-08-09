@@ -138,4 +138,4 @@ resources/views/
 
 ## 📝 Auteur
 
-Projet réalisé par [lelenta05 : https://github.com/votre-utilisateur ].
+Projet réalisé par [lelenta05 : https://github.com/lelenta05/ ].
