@@ -86,7 +86,9 @@ npm run dev
 
 ## 🌐 Usage
 -Tester les api avec l’outil Postman
+
 -Lien de la documentation : http://127.0.0.1:8080/api/documentation/
+
 Ou encore :
 - Accédez à l’accueil : http://localhost:8080
 - **Inscrivez-vous ou connectez-vous** (le token est automatiquement stocké).
